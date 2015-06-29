@@ -31,7 +31,8 @@ module Honeybadger
                 :handler       => job.handler,
                 :last_error    => job.last_error,
                 :attempts      => job.attempts,
-                :queue         => job.queue
+                :queue         => job.queue,
+                :gem_path      => Gem.path
               )
 
               ::Honeybadger::Trace.instrument("#{job.payload_object.class}#perform", {source: 'delayed_job', jid: job.id, class: job.payload_object.class.name}) do
